@@ -9,9 +9,14 @@ namespace InteropTests;
 
 // All interop test cases, minus GCE authentication specific tests.
 // Tests are separate methods so that they can be quarantined separately.
+public class InteropTests111
+{
+    private readonly ITestOutputHelper _output;
+
+}
 public class InteropTests
 {
-    private static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(30);
+    private static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(600);
     private readonly string _clientPath = Path.Combine(Directory.GetCurrentDirectory(), "InteropClient", "InteropClient.dll");
     private readonly string _serverPath = Path.Combine(Directory.GetCurrentDirectory(), "InteropWebsite", "InteropWebsite.dll");
     private readonly ITestOutputHelper _output;

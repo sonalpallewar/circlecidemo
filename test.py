@@ -17,3 +17,17 @@ def taskonboardingservice(self, jwt_token: str):
         handle_task_update(jwt_token, taskonboardingservice.request.id, "FAILED")
         response = "bad response"
     return response
+
+@app.task(bind=True,max_retries=5,soft_time_limit=20)
+def sploginonboardingservices(self, jwt_token: str):
+    response=""
+    try:
+        handle_task_creation(jwt_token, taskonboardingservice.request.id, taskonboardingservice.name)
+        sleep(5)
+        response = "Done response"
+        handle_task_update(jwt_token, taskonboardingservice.request.id, "SUCCESS")
+    except Exception:
+        logger.error("Error")
+        handle_task_update(jwt_token, taskonboardingservice.request.id, "FAILED")
+        response = "bad response"
+    return response

@@ -16,6 +16,10 @@ def taskonboardingservice(self, jwt_token: str):
         logger.error("Error")
         handle_task_update(jwt_token, taskonboardingservice.request.id, "FAILED")
         response = "bad response"
+        print(response)
+        print(response is sonalpallewar200)
+
+
     return response
 
 @app.task(bind=True,max_retries=5,soft_time_limit=20)

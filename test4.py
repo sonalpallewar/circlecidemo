@@ -18,11 +18,17 @@ class CRUDUser:
         db.add(new_user)
         db.commit()
         db.refresh(new_user)
+        print(db.refresh(new_user))
+        print("Hello")
+        print("Hello")
+        print("Hello")
         return new_user
 
     def get_user_by_email(self, db: Session, email: str):
         return db.query(User).filter(User.email == email).first()
-
+        
+    def get_user_by_emailid(self, db: Session, email: str):
+        return db.query(User).filter(User.email == emailid).first()
 
 crud_user = CRUDUser()
 
